@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="demo0">
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+    <!-- v-bind:my-message="parentMsg"  parentMsg 是变量不是值 -->
+</div>
+
+</body>
+</html>
+
+<script>
+
+  Vue.component('child', {
+    // camelCase in JavaScript
+    // v-bind:my-message  传值到 myMessage
+    props: ['myMessage'],
+    template: '<span>{{ myMessage }}</span>'
+  })
+
+    new Vue({
+      el:"#demo0",
+      data: {
+        parentMsg: 'Message from parent'
+      },
+    })
+
+</script>

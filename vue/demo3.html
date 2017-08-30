@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="demo3">
+    <example class="date-picker-theme-dark"></example>
+</div>
+
+</body>
+</html>
+
+<script>
+
+  Vue.component("example",{
+      template:"<input type=\"datetime-local\" class=\"form-control\">"
+    })
+
+    new Vue({
+      el:"#demo3"
+    })
+
+
+</script>

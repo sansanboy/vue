@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="demo4">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal" v-on:click.native="doTheThing"></button-counter>
+</div>
+</body>
+</html>
+<script>
+  Vue.component('button-counter', {
+    template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+    data: function () {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      incrementCounter: function () {
+        this.counter += 1
+        this.$emit('increment')  //  v-on:increment="incrementTotal" increment 是触发事件  触发  incrementTotal
+                                 // 其实是子和父的值并没有直接的关系，而是子触发啦父的一个函数 子加1的时候触发啦父也加1 ，提前约定好的，那么有没有办法通过把子的值传递给父呢
+      }
+    },
+    computed: {
+      normalizedSize: function () {
+        console.log("dd")
+        return this.size.trim().toLowerCase()
+      }
+    }
+  })
+
+    new Vue({
+      el:"#demo4",
+      data: {
+        total: 0
+      },
+      methods: {
+        incrementTotal: function () {
+          this.total += 1
+        },
+        doTheThing :function () {
+          console.log("ok")
+        }
+      }
+    })
+
+
+
+</script>

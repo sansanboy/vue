@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id = "demo1">
+    <example v-bind:prop-c="propC"  v-bind:prop-a="propA" v-bind:prop-f="propF" data-3d-date-picker="true">
+
+    </example>
+</div>
+</body>
+</html>
+
+<script>
+  Vue.component('example', {
+    props: {
+      // 基础类型检测 (`null` 意思是任何类型都可以)
+      propA: Number,
+      // 多种类型
+      propB: [String, Number],
+      // 必传且是字符串
+      propC: {
+        type: String,
+        required: true
+      },
+      // 数字，有默认值
+      propD: {
+        type: Number,
+        default: 100
+      },
+      // 数组/对象的默认值应当由一个工厂函数返回
+      propE: {
+        type: Object,
+        default: function () {
+          return { message: 'hello' }
+        }
+      },
+      // 自定义验证函数
+      propF: {
+        validator: function (value) {
+          return value > 10
+        }
+      }
+    },
+    template: '\<div>\
+    \<input type="date" class="form-control"> \
+    <li>\
+      {{ propC }}\ {{propA}}\  {{propD}} \ {{propE}} \   {{propF}} \
+    </li>\</div>\
+  ',
+  })
+
+    new Vue({
+      el:"#demo1",
+      data: {
+        propC:"ss",
+        propA:123, // must number, so this is error ,should be 123
+        propF:13,
+      }
+
+    })
+</script>
