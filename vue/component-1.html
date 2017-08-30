@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id = "app">
+    <my-comp></my-comp>
+</div>
+
+<script type="text/x-template" id="mytm">
+    <div >go go go </div>
+</script>
+
+</body>
+</html>
+
+
+
+
+<script>
+var child = {
+//    template: '<div>hi</div>'
+    template:'#mytm'
+}
+
+new Vue({
+    el:"#app",
+    components:{
+        "my-comp":child
+    }
+})
+</script>
