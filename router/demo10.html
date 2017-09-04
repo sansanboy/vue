@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <router-link to="/head">head</router-link>
+    <router-link to="/foot">foot</router-link>
+
+    <router-view></router-view>
+</div>
+</body>
+</html>
+
+
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+<script src="tem.js"></script>
+<script src="config.js"></script>
+<script>
+
+
+  const router = new VueRouter({
+    routes
+  })
+
+  const add = new Vue({
+    router
+  }).$mount("#app")
+
+</script>
